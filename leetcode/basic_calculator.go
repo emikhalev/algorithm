@@ -10,33 +10,32 @@ func calculate(s string) int {
 	return calc(s)
 }
 
-
 func calc(st string) int {
 	bs := []byte(st)
 	s := NewStack()
-	for i:=0;i<len(bs);i++ {
+	for i := 0; i < len(bs); i++ {
 		// Get number and place in stack
 		if isNum(bs[i]) {
 			sum := 0
 			k := 1
-			for ;i<len(bs) && isNum(bs[i]);i++ {
+			for ; i < len(bs) && isNum(bs[i]); i++ {
 				sum = sum + int(bs[i]-'0')*k
 				k *= 10
 			}
 			s.Push(sum)
-			if i>=len(bs)  {
+			if i >= len(bs) {
 				break
 			}
 		}
 		// operand and closing parenthesis place in stack
-		if isOp(bs[i]) || bs[i]==')' {
+		if isOp(bs[i]) || bs[i] == ')' {
 			s.Push(int(bs[i]))
 		}
 		// calc
-		if bs[i]=='(' {
+		if bs[i] == '(' {
 			sum := s.Pop()
 
-			for ;; {
+			for {
 				op := s.Pop()
 				if byte(op) == ')' {
 					s.Push(sum)
@@ -45,8 +44,10 @@ func calc(st string) int {
 				b := s.Pop()
 
 				switch byte(op) {
-				case  '+':  sum += b
-				case  '-':  sum -= b
+				case '+':
+					sum += b
+				case '-':
+					sum -= b
 				}
 
 			}
@@ -56,12 +57,14 @@ func calc(st string) int {
 
 	//s.Print()
 	ans := s.Pop()
-	for ;s.Size()>0; {
+	for s.Size() > 0 {
 		op := s.Pop()
 		b := s.Pop()
 		switch byte(op) {
-		case  '+':  ans += b
-		case  '-':  ans -= b
+		case '+':
+			ans += b
+		case '-':
+			ans -= b
 		}
 	}
 	return ans
@@ -70,21 +73,20 @@ func calc(st string) int {
 func reverse(s string) string {
 	bs := []byte(s)
 	l := len(bs)
-	for i:=0;i<len(bs)/2;i++ {
+	for i := 0; i < len(bs)/2; i++ {
 		t := bs[i]
-		bs[i] = bs[l - 1 - i]
-		bs[l - 1 - i] = t
+		bs[i] = bs[l-1-i]
+		bs[l-1-i] = t
 	}
 	return string(bs)
 }
 
-
 func isNum(b byte) bool {
-	return b>='0' && b<='9'
+	return b >= '0' && b <= '9'
 }
 
 func isOp(b byte) bool {
-	return b=='+' || b=='-' || b=='/' || b=='*'
+	return b == '+' || b == '-' || b == '/' || b == '*'
 }
 
 type Stack struct {
@@ -100,7 +102,7 @@ func (s *Stack) Push(v int) {
 }
 
 func (s *Stack) Pop() int {
-	idx := len(s.data)-1
+	idx := len(s.data) - 1
 	v := s.data[idx]
 	s.data = s.data[:idx]
 	return v
@@ -111,7 +113,7 @@ func (s *Stack) Size() int {
 }
 
 func (s *Stack) Print() {
-	for i:=len(s.data)-1;i>=0;i-- {
+	for i := len(s.data) - 1; i >= 0; i-- {
 		v := s.data[i]
 		st := string(v)
 		if !isOp(byte(v)) {

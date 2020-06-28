@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/binary-tree-maximum-path-sum/
 package main
+
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
@@ -13,15 +14,14 @@ func maxPathSum(root *TreeNode) int {
 	return maxSum
 }
 
-const intMin = -1<<31
+const intMin = -1 << 31
 
 func maxSumForNode(node *TreeNode) (val, maxSum int) {
 	if node == nil {
 		return intMin, intMin
 	}
 
-
-	valL, maxSumL := maxSumForNode(node.Left);
+	valL, maxSumL := maxSumForNode(node.Left)
 	valR, maxSumR := maxSumForNode(node.Right)
 
 	sumC := node.Val
@@ -37,14 +37,13 @@ func maxSumForNode(node *TreeNode) (val, maxSum int) {
 		sumCR += valR
 	}
 
-	//fmt.Printf("%v\n", sumCAll)
 	sumCMax := max(sumC, max(sumCL, sumCR))
 
 	return sumCMax, max(sumCAll, max(sumCMax, max(maxSumL, maxSumR)))
 }
 
 func max(i, j int) int {
-	if i>j {
+	if i > j {
 		return i
 	}
 	return j

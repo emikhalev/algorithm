@@ -7,23 +7,22 @@ func minWindow(s string, t string) string {
 	signT := signature(t)
 	cntT := len(t)
 
-
 	signS := make(map[byte]int)
 	cntS := 0
 
 	i, j := 0, 0
-	for ;i<len(s) && j<len(s); {
+	for i < len(s) && j < len(s) {
 		// skip all characters until first that can be found in signT
-		for ;i<len(s);i++ {
+		for ; i < len(s); i++ {
 			if _, ok := signT[s[i]]; ok {
 				break
 			}
 		}
-		if len(s)==i {
+		if len(s) == i {
 			break
 		}
-		if j<i {
-			j=i
+		if j < i {
+			j = i
 		}
 
 		ch := s[j]
@@ -36,16 +35,15 @@ func minWindow(s string, t string) string {
 		cCntS = cCntS + 1
 		signS[ch] = cCntS
 
-		if cCntT, ok:=signT[ch]; ok && cCntS <= cCntT {
+		if cCntT, ok := signT[ch]; ok && cCntS <= cCntT {
 			cntS++
 		}
 
 		if cntS == cntT {
 			// Move i ahead logic
 			// -- find first substr with one character left and min substr
-			for ;cntS==cntT; {
+			for cntS == cntT {
 				cst := string([]byte(s)[i:j])
-				//fmt.Printf("CST: %v\n", ans)
 				if len(ans) > len(cst) || len(ans) == 0 {
 					ans = cst
 				}
@@ -55,7 +53,7 @@ func minWindow(s string, t string) string {
 				cCntS--
 				signS[ch] = cCntS
 
-				if cCntT, ok:=signT[ch]; ok && cCntS<cCntT {
+				if cCntT, ok := signT[ch]; ok && cCntS < cCntT {
 					cntS--
 				}
 				i++
@@ -68,7 +66,7 @@ func minWindow(s string, t string) string {
 
 func signature(st string) map[byte]int {
 	r := make(map[byte]int)
-	for i:=0;i<len(st);i++ {
+	for i := 0; i < len(st); i++ {
 		v, ok := r[st[i]]
 		if !ok {
 			v = 0

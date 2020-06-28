@@ -6,11 +6,11 @@ func isMatch(s string, p string) bool {
 }
 
 func checkMatch(s string, re string, sPos, rePos int) bool {
-	for ;rePos<len(re) && sPos<len(s); {
+	for rePos < len(re) && sPos < len(s) {
 
 		ch := re[rePos]
 		nCh := byte(0)
-		if rePos<len(re)-1 {
+		if rePos < len(re)-1 {
 			nCh = re[rePos+1]
 		}
 
@@ -24,7 +24,7 @@ func checkMatch(s string, re string, sPos, rePos int) bool {
 				rePos++
 				continue
 			} else {
-				for i:=sPos;i<=len(s);i++ {
+				for i := sPos; i <= len(s); i++ {
 					if checkMatch(s, re, i, rePos+2) {
 						return true
 					}
@@ -42,21 +42,21 @@ func checkMatch(s string, re string, sPos, rePos int) bool {
 				}
 				return false
 			} else {
-				for i:=sPos;i<len(s) && s[i]==ch;i++ {
+				for i := sPos; i < len(s) && s[i] == ch; i++ {
 					if checkMatch(s, re, i+1, rePos+2) {
 						return true
 					}
 				}
-				rePos+=2
+				rePos += 2
 				continue
 			}
 		}
 
 	}
 
-	for ;rePos<len(re); {
+	for rePos < len(re) {
 		nCh := byte(0)
-		if rePos<len(re)-1 {
+		if rePos < len(re)-1 {
 			nCh = re[rePos+1]
 		}
 		if nCh == '*' {

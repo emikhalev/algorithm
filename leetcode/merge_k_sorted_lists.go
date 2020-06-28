@@ -11,9 +11,9 @@ package main
 func mergeKLists(lists []*ListNode) *ListNode {
 	var h, nn *ListNode = nil, findNextMin(lists)
 	c := h
-	for ;nn!=nil; {
+	for nn != nil {
 		if nn != nil {
-			if h==nil {
+			if h == nil {
 				h = nn
 				c = nn
 			} else {
@@ -28,10 +28,9 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 func findNextMin(lists []*ListNode) *ListNode {
 	minIdx := -1
-	for i:=0;i<len(lists);i++ {
-		if lists[i]!=nil && (
-			minIdx == -1 ||
-				(lists[minIdx]!=nil && lists[minIdx].Val > lists[i].Val)) {
+	for i := 0; i < len(lists); i++ {
+		if lists[i] != nil && (minIdx == -1 ||
+			(lists[minIdx] != nil && lists[minIdx].Val > lists[i].Val)) {
 			minIdx = i
 		}
 	}

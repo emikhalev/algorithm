@@ -12,7 +12,7 @@ func removeInvalidParentheses(s string) []string {
 func removeDuplicates(r []string) []string {
 	res := make([]string, 0, len(r))
 	m := make(map[string]struct{})
-	for i:=0;i<len(r);i++ {
+	for i := 0; i < len(r); i++ {
 		if _, ok := m[r[i]]; ok {
 			continue
 		}
@@ -24,19 +24,19 @@ func removeDuplicates(r []string) []string {
 
 func parToRemove(s string) int {
 	left, right := 0, 0
-	for i:=0;i<len(s);i++ {
+	for i := 0; i < len(s); i++ {
 		if s[i] == '(' {
 			left++
 		}
 		if s[i] == ')' {
-			if left>0 {
+			if left > 0 {
 				left--
 			} else {
 				right++
 			}
 		}
 	}
-	return left+right
+	return left + right
 }
 
 func isValid(s string) bool {
@@ -63,13 +63,13 @@ func processParenthesesAtPos(s string, pos int, toRemove int) []string {
 }
 
 func removeChar(s string, pos int) string {
-	if s=="" {
+	if s == "" {
 		return s
 	}
 	idx := 0
 	bs := make([]byte, len(s)-1)
-	for i:=0;i<len(s);i++ {
-		if i==pos {
+	for i := 0; i < len(s); i++ {
+		if i == pos {
 			continue
 		}
 		bs[idx] = s[i]
@@ -79,11 +79,11 @@ func removeChar(s string, pos int) string {
 }
 
 func getNextParentheses(s string, pos int) int {
-	if s=="" {
+	if s == "" {
 		return -1
 	}
-	np:=-1
-	for i:=pos+1;i<len(s);i++ {
+	np := -1
+	for i := pos + 1; i < len(s); i++ {
 		if s[i] == ')' || s[i] == '(' {
 			np = i
 			break

@@ -17,7 +17,6 @@ import (
  */
 
 type Codec struct {
-
 }
 
 func Constructor() Codec {
@@ -28,23 +27,22 @@ func Constructor() Codec {
 func (this *Codec) serialize(root *TreeNode) string {
 	s := this.serializeNode(root)
 	st := "["
-	for i:=0;i<len(s);i++ {
-		if len(st)>1 {
+	for i := 0; i < len(s); i++ {
+		if len(st) > 1 {
 			st += ","
 		}
-		if s[i]==nil {
-			st = st+"null"
+		if s[i] == nil {
+			st = st + "null"
 			continue
 		}
 		st += fmt.Sprintf("%v", *s[i])
 	}
-	st+="]"
-	fmt.Println(st)
+	st += "]"
 	return st
 }
 
 func (this *Codec) serializeNode(n *TreeNode) []*int {
-	if n==nil {
+	if n == nil {
 		return []*int{nil}
 	}
 
@@ -61,7 +59,7 @@ func (this *Codec) serializeNode(n *TreeNode) []*int {
 // Deserializes your encoded data to tree.
 func (this *Codec) deserialize(data string) *TreeNode {
 	db := []byte(data)
-	db = db[1:len(db)-1]
+	db = db[1 : len(db)-1]
 	parts := strings.Split(string(db), ",")
 
 	root, _ := this.deserializeNode(parts, 0)
@@ -69,8 +67,8 @@ func (this *Codec) deserialize(data string) *TreeNode {
 }
 
 func (this *Codec) deserializeNode(nodes []string, n int) (*TreeNode, int) {
-	if n>len(nodes) || nodes[n]=="null" {
-		return nil, n+1
+	if n > len(nodes) || nodes[n] == "null" {
+		return nil, n + 1
 	}
 	v, _ := strconv.Atoi(nodes[n])
 	node := &TreeNode{
@@ -83,7 +81,6 @@ func (this *Codec) deserializeNode(nodes []string, n int) (*TreeNode, int) {
 
 	return node, n
 }
-
 
 /**
  * Your Codec object will be instantiated and called as such:
