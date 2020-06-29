@@ -1,7 +1,9 @@
 // https://leetcode.com/problems/validate-ip-address/
 package main
 
-import "strings"
+import (
+	"strings"
+)
 
 func validIPAddress(IP string) string {
 	if isIPv4(IP) {
