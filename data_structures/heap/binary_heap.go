@@ -44,7 +44,7 @@ func (h *BinaryHeap) Extract() (int, bool) {
 	}
 
 	rv := h.data[0]
-	li := len(h.data)-1
+	li := len(h.data) - 1
 	h.data[0] = h.data[li]
 	h.data = h.data[:li]
 
@@ -61,8 +61,8 @@ func (h *BinaryHeap) Extract() (int, bool) {
 */
 func (h *BinaryHeap) siftUp() {
 	c := len(h.data) - 1
-	for ;c>0; {
-		p := (c-1) / 2
+	for c > 0 {
+		p := (c - 1) / 2
 		if h.data[c] < h.data[p] {
 			break
 		}
@@ -80,9 +80,9 @@ func (h *BinaryHeap) siftUp() {
 1. Compare the new root with its children; if they are in the correct order, stop.
 2. If not, swap the element with one of its children and return to the previous step.
 	(Swap with its smaller child in a min-heap and its larger child in a max-heap.)
- */
+*/
 func (h *BinaryHeap) siftDown(i int) {
-	for ;; {
+	for {
 		left := 2*i + 1
 		right := 2*i + 2
 		largest := i

@@ -2,14 +2,13 @@ package heap
 
 import "testing"
 
-
 var (
-	compareFnMaxHeap = func (i, j int) int {
-		return i-j
+	compareFnMaxHeap = func(i, j int) int {
+		return i - j
 	}
 
-	compareFnMinHeap = func (i, j int) int {
-		return j-i
+	compareFnMinHeap = func(i, j int) int {
+		return j - i
 	}
 )
 

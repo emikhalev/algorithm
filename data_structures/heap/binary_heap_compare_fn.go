@@ -3,7 +3,7 @@
 package heap
 
 type BinaryHeapFn struct {
-	data []int
+	data      []int
 	compareFn func(i, j int) int
 }
 
@@ -18,7 +18,7 @@ func (h *BinaryHeapFn) Extract() (int, bool) {
 	}
 
 	rv := h.data[0]
-	li := len(h.data)-1
+	li := len(h.data) - 1
 	h.data[0] = h.data[li]
 	h.data = h.data[:li]
 
@@ -28,8 +28,8 @@ func (h *BinaryHeapFn) Extract() (int, bool) {
 
 func (h *BinaryHeapFn) siftUp() {
 	c := len(h.data) - 1
-	for ;c>0; {
-		p := (c-1) / 2
+	for c > 0 {
+		p := (c - 1) / 2
 		if h.compareFn(h.data[c], h.data[p]) < 0 {
 			break
 		}
@@ -41,7 +41,7 @@ func (h *BinaryHeapFn) siftUp() {
 }
 
 func (h *BinaryHeapFn) siftDown(i int) {
-	for ;; {
+	for {
 		left := 2*i + 1
 		right := 2*i + 2
 		largest := i
