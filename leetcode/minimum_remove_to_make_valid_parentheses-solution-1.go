@@ -7,17 +7,17 @@ func minRemoveToMakeValid(s string) string {
 }
 
 func into(s []byte, pos, level int) ([]byte, int) {
-	for i:=pos; i<len(s); i++ {
+	for i := pos; i < len(s); i++ {
 		c := s[i]
-		if c=='(' {
+		if c == '(' {
 			s, i = into(s, i+1, level+1)
 			continue
 		}
-		if c==')' {
-			if level>0 {
+		if c == ')' {
+			if level > 0 {
 				return s, i
 			} else {
-				if i+1<len(s) {
+				if i+1 < len(s) {
 					s = append(s[:i], s[i+1:]...)
 				} else {
 					s = s[:i]
@@ -26,15 +26,13 @@ func into(s []byte, pos, level int) ([]byte, int) {
 			}
 		}
 	}
-	if level>0 {
-		if pos<len(s) {
+	if level > 0 {
+		if pos < len(s) {
 			s = append(s[:pos-1], s[pos:]...)
 		} else {
 			s = s[:pos-1]
 		}
-		return s, len(s)-1
+		return s, len(s) - 1
 	}
 	return s, len(s)
 }
-
-

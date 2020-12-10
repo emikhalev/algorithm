@@ -7,8 +7,8 @@ import (
 var (
 	graph *Graph
 
+	//   0  1  2  3  4 comment is here because of go fmt ...
 	testGraphAdjMaxtrix = [][]int{
-	  // 0  1  2  3  4
 		{0, 1, 1, 0, 0}, // 0
 		{0, 0, 0, 0, 0}, // 1
 		{0, 0, 0, 0, 0}, // 2
@@ -36,7 +36,6 @@ func initGraph() {
 	}
 }
 
-
 func TestGraph_Adjacent(t *testing.T) {
 	for x, _ := range testGraphAdjMaxtrix {
 		for y, _ := range testGraphAdjMaxtrix {
@@ -49,4 +48,3 @@ func TestGraph_Adjacent(t *testing.T) {
 		}
 	}
 }
-

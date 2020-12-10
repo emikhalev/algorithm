@@ -14,4 +14,3 @@ remove_edge(G, x, y): removes the edge from the vertex x to the vertex y, if it 
 get_vertex_value(G, x): returns the value associated with the vertex x;
 set_vertex_value(G, x, v): sets the value associated with the vertex x to v.
 */
-

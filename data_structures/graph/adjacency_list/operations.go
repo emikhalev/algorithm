@@ -2,8 +2,8 @@ package adjacency_list
 
 func (g *Graph) Adjacent(x, y int) bool {
 	if nodeX, ok := g.adjList[x]; ok {
-		for _, v :=range nodeX {
-			if v==y {
+		for _, v := range nodeX {
+			if v == y {
 				return true
 			}
 		}
@@ -18,7 +18,7 @@ func (g *Graph) Neighbors(x int) []int {
 	return []int{}
 }
 
-func (g *Graph) AddVertex(x int)  {
+func (g *Graph) AddVertex(x int) {
 	if _, ok := g.adjList[x]; !ok {
 		g.adjList[x] = make([]int, 0, 4)
 		g.values[x] = nil
@@ -32,7 +32,7 @@ func (g *Graph) RemoveVertex(x int) {
 	}
 }
 
-func (g *Graph) AddEdge(x, y int)  {
+func (g *Graph) AddEdge(x, y int) {
 	if g.Adjacent(x, y) {
 		return
 	}
@@ -48,7 +48,7 @@ func (g *Graph) RemoveEdge(x, y int) {
 				// Move last element to the position of element, that would be deleted
 				// And truncates slice (remove last element)
 				nodeX[idx] = nodeX[len(nodeX)-1]
-				g.adjList[x] = nodeX[0:len(nodeX)-1]
+				g.adjList[x] = nodeX[0 : len(nodeX)-1]
 			}
 		}
 	}
@@ -66,4 +66,3 @@ func (g *Graph) SetVertexValue(x int, v interface{}) (ok bool) {
 	g.values[x] = v
 	return true
 }
-
