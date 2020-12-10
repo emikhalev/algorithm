@@ -10,11 +10,11 @@ var (
 	graph *adjacency_list.Graph
 
 	/*
-	        0
-	      /  \
-	     1	--2
-	        \/ \
-	        3 - 4
+	      0
+	    /  \
+	   1  --2
+	      \/ \
+	      3 - 4
 
 	*/
 	//   0  1  2  3  4 comment is here because of go fmt ...

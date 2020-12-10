@@ -48,3 +48,5 @@ func TestGraph_Adjacent(t *testing.T) {
 		}
 	}
 }
+
+// TODO: Test coverage 100%
