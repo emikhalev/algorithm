@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/3sum/
-package main
+package _sum
 
 import (
 	"sort"

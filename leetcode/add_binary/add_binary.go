@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/add-binary/
-package main
+package add_binary
 
 func addBinary(a string, b string) string {
 	aIdxShift := 0

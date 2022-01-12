@@ -12,12 +12,10 @@ package main
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	current := head
 	cnt := 0
-	for ;current!=nil; {
+	for current != nil {
 		current = current.Next
 		cnt++
 	}
-
-
 
 	nPos := cnt - n - 1
 	if nPos == -1 {
@@ -27,9 +25,8 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		return nil
 	}
 
-
 	current = head
-	for i:=0; i<nPos; i++ {
+	for i := 0; i < nPos; i++ {
 		current = current.Next
 	}
 
@@ -39,4 +36,3 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 	return head
 }
-

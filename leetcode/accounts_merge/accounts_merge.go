@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/accounts-merge/
-package main
+package accounts_merge
 
 import (
 	"sort"

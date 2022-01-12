@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/add-and-search-word-data-structure-design/
-package main
+package add_and_search_word_data_structure_design
 
 type WordDictionary struct {
 	root *Node

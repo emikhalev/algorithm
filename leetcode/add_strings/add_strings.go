@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/add-strings/
-package main
+package add_strings
 
 func addStrings(num1 string, num2 string) string {
 	total := make([]byte, max(len(num1), len(num2))+1)
