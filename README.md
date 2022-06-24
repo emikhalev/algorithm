@@ -1,7 +1,7 @@
 Algorithms
 ===
 
-This is the collection of solutions for some computer problems that I have solved. 
+This is the collection of solutions to some computer problems that I have solved. 
 
 Problems from the leetcode website located in "leetcode"
 
