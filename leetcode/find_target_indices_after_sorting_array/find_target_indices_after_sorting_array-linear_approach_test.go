@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_targetIndices(t *testing.T) {
+func Test_targetIndicesSolutionLinear(t *testing.T) {
 	cases := []struct {
 		nums   []int
 		target int
@@ -29,14 +29,14 @@ func Test_targetIndices(t *testing.T) {
 	}
 
 	for idx, tc := range cases {
-		out := targetIndices(tc.nums, tc.target)
+		out := targetIndicesLinear(tc.nums, tc.target)
 		if !reflect.DeepEqual(out, tc.exp) {
 			t.Errorf("case %d error: \n-- got: %v\n-- expected: %v", idx, out, tc.exp)
 		}
 	}
 }
 
-func Benchmark_targetIndices(b *testing.B) {
+func Benchmark_targetIndicesSolutionLinear(b *testing.B) {
 	const (
 		target = 7
 		cnt    = 30
@@ -47,6 +47,6 @@ func Benchmark_targetIndices(b *testing.B) {
 	}
 
 	for i := 0; i < b.N; i++ {
-		targetIndices(benchCase, target)
+		targetIndicesLinear(benchCase, target)
 	}
 }

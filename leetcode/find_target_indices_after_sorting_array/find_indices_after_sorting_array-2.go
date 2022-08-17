@@ -31,16 +31,15 @@ func targetIndicesSolutionV2(nums []int, target int) []int {
 	rightIdx := r - 1
 
 	cnt := rightIdx - leftIdx + 1
-	if cnt <=0 {
+	if cnt <= 0 {
 		return nil
 	}
 
 	// Collect all indices
 	res := make([]int, cnt)
-	for idx:=leftIdx;idx<=rightIdx;idx++ {
+	for idx := leftIdx; idx <= rightIdx; idx++ {
 		res[idx-leftIdx] = idx
 	}
 
 	return res
 }
-

@@ -29,9 +29,24 @@ func Test_targetIndicesSolutionV2(t *testing.T) {
 	}
 
 	for idx, tc := range cases {
-		out := targetIndices(tc.nums, tc.target)
+		out := targetIndicesSolutionV2(tc.nums, tc.target)
 		if !reflect.DeepEqual(out, tc.exp) {
 			t.Errorf("case %d error: \n-- got: %v\n-- expected: %v", idx, out, tc.exp)
 		}
+	}
+}
+
+func Benchmark_targetIndicesSolutionV2(b *testing.B) {
+	const (
+		target = 7
+		cnt    = 30
+	)
+	benchCase := make([]int, cnt)
+	for i := 0; i < cnt; i++ {
+		benchCase[i] = target
+	}
+
+	for i := 0; i < b.N; i++ {
+		targetIndicesSolutionV2(benchCase, target)
 	}
 }
